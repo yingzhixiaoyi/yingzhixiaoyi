@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -40,31 +40,37 @@ const routes = [
         name: 'article',
         component: () => import('../views/Articles.vue'),
         meta: { title: '文章'}
+    },
+    {
+        path: '/demo',
+        name: 'demo',
+        component: () => import('../views/demo.vue'),
+        meta: {title: 'demo'}
     }
-]
+];
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
-})
+});
 router.beforeEach((to, from, next) => {
-    let title = 'Justin'
+    let title = 'Justin';
     if (to.meta.params){
         title = `${to.meta.title}:${to.params[to.meta.params] || ''} - ${title}`
     }else {
         title = `${to.meta.title} - ${title}`
     }
-    document.title = title
+    document.title = title;
     if (to.path !== from.path) {
         store.dispatch('setLoading', true);
     }
     next();
-})
+});
 router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
     setTimeout(() => {
         store.dispatch('setLoading', false);
     }, 1500)
-})
+});
 export default router
