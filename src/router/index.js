@@ -5,6 +5,13 @@ import store from '@/store'
 Vue.use(VueRouter);
 
 const routes = [
+    
+    {
+        path: '*',
+        name: 'default',
+        redirect: '/'
+    },
+    
     {
         path: '/',
         name: 'home',
@@ -42,10 +49,10 @@ const routes = [
         meta: { title: '文章'}
     },
     {
-        path: '/demo',
-        name: 'demo',
-        component: () => import('../views/demo.vue'),
-        meta: {title: 'demo'}
+        path: '/contents',
+        name: 'contents',
+        component: () => import('../components/contents.vue'),
+        meta: {title: 'contents'}
     }
 ];
 
@@ -69,6 +76,7 @@ router.beforeEach((to, from, next) => {
 });
 router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
+    window.scrollTo(0, 0)
     setTimeout(() => {
         store.dispatch('setLoading', false);
     }, 1500)

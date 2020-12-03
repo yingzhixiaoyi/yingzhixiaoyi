@@ -1,26 +1,9 @@
 const Mock = require('mockjs');
-const count = 100;
+import store from '../store'
 
+const count = 100;
 const baseContent = '<p>I am testing data, I am testing data.</p><p><img src="https://wpimg.wallstcn.com/4c69009c-0fd4-4153-b112-6cb53d1cf943"></p>';
 const image_uri = 'https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70b3';
-
-const files = require.context('../components/article', true, /\.md$/);
-let arr = files.keys().map((item, index) => {
-    return {
-      banner: "https://s1.ax1x.com/2020/05/14/YDhagx.jpg",
-      commentsCount: 99,
-      content: "",
-      id: index,
-      isHot: true,
-      isTop: true,
-      pubTime: new Date().getTime(),
-      summary: "Lua 是一种轻量小巧的脚本语言，能为应用程序提供灵活的扩展和定制功能。",
-      title: item.replace('./', '').replace('.md', ''),
-      viewsCount: 4045,
-    }
-  }
-);
-
 const banners = [
   'https://s1.ax1x.com/2020/05/14/YDhagx.jpg',
   'https://s1.ax1x.com/2020/05/14/YDhU81.jpg',
@@ -28,6 +11,28 @@ const banners = [
   'https://s1.ax1x.com/2020/05/14/YDhoVg.jpg',
   'https://s1.ax1x.com/2020/05/14/YD4FR1.jpg'
 ];
+
+const files = require.context('../components/article', true, /\.md$/);
+
+let brr = [];
+let arr = files.keys().map((item, index) => {
+  brr.push(item.replace('./', '').replace('.md', '') || '')
+    return {
+      banner: banners[index % 5],
+      commentsCount: files.keys().length || 0,
+      content: '',
+      id: item.replace('./', '').replace('.md', '') || '',
+      isHot: true,
+      isTop: true,
+      pubTime: new Date().getTime(),
+      summary: `${item.replace('./', '').replace('.md', '') || ''} 部分总结`,
+      title: item.replace('./', '').replace('.md', '') || '',
+      viewsCount: files.keys().length || 0,
+    }
+  }
+);
+store.commit('SET_CONTENT', brr)
+
 const List = [{
   id: 0,
   isTop: true,
@@ -67,9 +72,9 @@ export default [
       return {
         code: 20000,
         data: {
-          total: List.length,
+          total: arr.length,
           items: arr,// pageList.sort((a, b) => a.isTop === b.isTop ? 0 : a.isTop ? -1 : 1),
-          hasNextPage: page * size < List.length,
+          hasNextPage: page * size < arr.length,
           page: page,
           size: size
         }

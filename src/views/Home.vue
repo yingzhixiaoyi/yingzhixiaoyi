@@ -85,28 +85,11 @@
     watch: {
       '$route.params'(e, v) {
         if (e) {
-          this.test(e.words)
+          this.fetchList(e.words)
         }
       }
     },
     methods: {
-      test(e) {
-        console.log(
-          '~~~~~~~~~~~~~~~~~~~~~~~~~~~',
-          'info test()', e
-          , '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-        );
-        fetchList().then(res => {
-          console.log(
-            '~~~~~~~~~~~~~~~~~~~~~~~~~~~',
-            res
-            , '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-          )
-          // this.features = res.data || []
-        }).catch(err => {
-          console.log(err)
-        })
-      },
       fetchFocus() {
         fetchFocus().then(res => {
           this.features = res.data || []
