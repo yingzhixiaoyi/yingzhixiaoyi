@@ -14,7 +14,7 @@
             <!--焦点图-->
             <div class="top-feature" v-if="!hideSlogan">
                 <section-title>
-                    <div style="display: flex;align-items: flex-end;">聚焦
+                    <div style="display: flex;align-items: flex-end;">散心风景
                         <small-ico></small-ico>
                     </div>
                 </section-title>

@@ -1,4 +1,8 @@
 const Mock = require('mockjs');
+
+function getRandomNumberByRange(start, end) {
+    return Math.round(Math.random() * (end - start) + start)
+}
 export default [
     {
         url: '/focus/list',
@@ -9,21 +13,22 @@ export default [
                 data: [
                     {
                         id: 1,
-                        title: 'Akina',
-                        img: 'https://s1.ax1x.com/2020/05/14/YDfRnU.jpg'
+                        title: '公平正义',
+                        img: `https://picsum.photos/257/160/?image=` + getRandomNumberByRange(0, 1084)
                     },
                     {
                         id: 2,
-                        title: '使用说明',
-                        img: 'https://s1.ax1x.com/2020/05/14/YDf4AJ.jpg'
+                        title: '诚信友爱',
+                        img: `https://picsum.photos/257/160/?image=` + getRandomNumberByRange(0, 1084)
                     },
                     {
                         id: 3,
-                        title: '文章归档',
-                        img: 'https://s1.ax1x.com/2020/05/14/YDfT91.jpg'
+                        title: '和谐相处',
+                        img: `https://picsum.photos/257/160/?image=` + getRandomNumberByRange(0, 1084)
                     }
                 ]
             }
         }
     }
 ]
+// `https://picsum.photos/257/160/?image=` + this.getRandomNumberByRange(0, 1084)

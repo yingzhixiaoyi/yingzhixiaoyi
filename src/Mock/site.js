@@ -10,9 +10,9 @@ export default [
                 data: {
                   avatar: 'https://nos.netease.com/mail-online/5a480f7f09e60760807e74f14d1ee7d4/mail180x180.jpg',
                     slogan: 'The way up is not crowded, and most chose ease.',
-                    name: 'FZY′blog',
-                    domain: 'https://www.fengziy.cn',
-                    notice: '本博客的Demo数据由Mockjs生成',
+                    name: 'yingzhixiaoyi′blog',
+                    domain: 'http://yingzhixiaoyi.gitee.io/',
+                    notice: '点滴积累，未来可期',
                     desc: '一个It技术的探索者'
                 }
             }
@@ -31,7 +31,7 @@ export default [
                         title: 'QQ',
                         icon: 'iconqq',
                         color: '#1AB6FF ',
-                        href: 'http://wpa.qq.com/msgrd?v=3&uin=1224971566&site=qq&menu=yes'
+                        href: 'https://www.zhihu.com/people/ying-zhi-xiao-yi'
                     },
                     {
                         id: 2,
@@ -49,10 +49,10 @@ export default [
                     },
                     {
                         id: 4,
-                        title: 'CSDN',
+                        title: 'csdn',
                         icon: 'iconcsdn',
                         color: 'red',
-                        href: 'https://blog.csdn.net/feng_zi_ye'
+                        href: 'https://www.zhihu.com/people/ying-zhi-xiao-yi'
                     }
                 ]
             }
