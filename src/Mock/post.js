@@ -1,15 +1,15 @@
 const Mock = require('mockjs');
 import store from '../store'
-
+import {getRandomNumberByRange} from '../utils'
 const count = 100;
 const baseContent = '<p>I am testing data, I am testing data.</p><p><img src="https://wpimg.wallstcn.com/4c69009c-0fd4-4153-b112-6cb53d1cf943"></p>';
 const image_uri = 'https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70b3';
 const banners = [
-  'https://s1.ax1x.com/2020/05/14/YDhagx.jpg',
-  'https://s1.ax1x.com/2020/05/14/YDhU81.jpg',
-  'https://s1.ax1x.com/2020/05/14/YDhBDO.jpg',
-  'https://s1.ax1x.com/2020/05/14/YDhoVg.jpg',
-  'https://s1.ax1x.com/2020/05/14/YD4FR1.jpg'
+  `https://picsum.photos/100/100/?image=` + getRandomNumberByRange(0, 1084),
+  `https://picsum.photos/100/100/?image=` + getRandomNumberByRange(0, 1084),
+  `https://picsum.photos/100/100/?image=` + getRandomNumberByRange(0, 1084),
+  `https://picsum.photos/100/100/?image=` + getRandomNumberByRange(0, 1084),
+  `https://picsum.photos/100/100/?image=` + getRandomNumberByRange(0, 1084)
 ];
 
 const files = require.context('../components/article', true, /\.md$/);

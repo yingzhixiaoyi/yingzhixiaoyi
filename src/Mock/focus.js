@@ -1,8 +1,5 @@
 const Mock = require('mockjs');
-
-function getRandomNumberByRange(start, end) {
-    return Math.round(Math.random() * (end - start) + start)
-}
+import {getRandomNumberByRange} from '../utils'
 export default [
     {
         url: '/focus/list',

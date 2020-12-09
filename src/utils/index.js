@@ -386,3 +386,12 @@ export function removeClass(ele, cls) {
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+/**
+ * 导出随机数两位
+ * 配合获取随机图片使用
+ *
+ */
+export function getRandomNumberByRange(start, end) {
+  return Math.round(Math.random() * (end - start) + start)
+}

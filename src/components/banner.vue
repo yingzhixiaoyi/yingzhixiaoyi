@@ -26,6 +26,7 @@
 </template>
 
 <script>
+  import {getRandomNumberByRange} from '../utils'
     export default {
         name: "banner",
         data(){
@@ -37,7 +38,7 @@
         props:{
             src:{
                 type: String,
-                default: 'https://s1.ax1x.com/2020/05/23/YxaLMq.jpg'
+                default: `https://picsum.photos/1920/1080/?image=` + getRandomNumberByRange(0, 1084)
             },
             isHome:{
                 type: [Boolean,String],
