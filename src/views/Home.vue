@@ -84,8 +84,8 @@
     },
     watch: {
       '$route.params'(e, v) {
-        if (e) {
-          this.fetchList(e.words)
+        if (e.words) {
+          this.fetchList()
         }
       }
     },

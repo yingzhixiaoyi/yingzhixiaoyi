@@ -8,7 +8,7 @@ export default [
             return {
                 code: 20000,
                 data: {
-                    avatar: 'https://s2.ax1x.com/2020/01/17/1SCadg.png',
+                  avatar: 'https://nos.netease.com/mail-online/5a480f7f09e60760807e74f14d1ee7d4/mail180x180.jpg',
                     slogan: 'The way up is not crowded, and most chose ease.',
                     name: 'FZY′blog',
                     domain: 'https://www.fengziy.cn',
@@ -38,7 +38,7 @@ export default [
                         title: 'Gitee',
                         icon: 'icongitee',
                         color: '#d81e06',
-                        href: 'https://gitee.com/yingzhixiaoyi'
+                      href: 'http://yingzhixiaoyi.gitee.io/'
                     },
                     {
                         id: 3,

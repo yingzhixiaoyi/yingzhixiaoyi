@@ -5,13 +5,6 @@ import store from '@/store'
 Vue.use(VueRouter);
 
 const routes = [
-    
-    {
-        path: '*',
-        name: 'default',
-        redirect: '/'
-    },
-    
     {
         path: '/',
         name: 'home',
