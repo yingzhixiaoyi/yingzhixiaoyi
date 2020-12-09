@@ -1,3 +1,20 @@
+## vue项目使用Markdown文档
+
+#### 1、使用插件[mavonEditor][https://www.npmjs.com/package/mavon-editor]
+![1607487449591](https://imgkr2.cn-bj.ufileos.com/a3980e01-dba5-413e-a88d-54eaada3561d.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=NJU5K6PKmceesJj4yOwnrmLchBs%253D&Expires=1607574453)
+
+#### 2、main.js操作
+
+```
+// 引入makrdown插件
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor);
+```
+
+#### 3、页面使用
+
+```
 <template>
     <div class="mavonEditor">
         <ul class="list">
@@ -32,7 +49,6 @@
     }
   };
 </script>
-
 <style lang="less" scoped>
     .list {
         position: fixed;
@@ -83,3 +99,22 @@
     }
 
 </style>
+```
+
+#### 4、vue项目查找 .md文件
+
+```
+const files = require.context('../components/article', true, /\.md$/);//指定目录，全部查找，正则匹配
+let brr = [];
+let arr = files.keys().map((item, index) => {
+  brr.push(item.replace('./', '').replace('.md', '') || '')
+  //获取到全部文件名集合数组
+```
+
+
+
+#### 5、阶段总结
+
+1，此插件为.md的线上编译器+预览
+
+2，样式上需要手动调整，如遇到</code></pre>情况展示错误，可加空行或者一个tab间隔分离就OK

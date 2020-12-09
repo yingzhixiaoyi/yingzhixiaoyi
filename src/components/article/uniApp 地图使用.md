@@ -47,7 +47,7 @@ methods: {
 						vm.addDingwei()
 					},
 				})
-			},
+			},  
 			//移动到指定位置
 			moveToLocation() {
 				let vm = this
@@ -59,8 +59,7 @@ methods: {
 						success: () => {}
 					})
 				}
-			}，
-
+			}，  
 			//添加定位点
 			addDingwei() {
 				let vm = this,arr = [];
@@ -79,8 +78,7 @@ methods: {
 					},
 				})
 				vm.markers = arr
-			},
-
+			},  
 			//点击控件
 			controltap(e) {
 				let vm = this
@@ -94,8 +92,7 @@ methods: {
 						}
 					})
 				}
-			},
-
+			},  
 			//移动地图位置触发获取地图中心店坐标
 			regionchange(e) {
 				let vm = this
@@ -104,13 +101,19 @@ methods: {
 				}
 			},
 			}
+
 ```
+
+
+
 
 ## 唤醒第三方地图 
 
 ![1607480370610](https://imgkr2.cn-bj.ufileos.com/ef3dbbd2-8aa1-495d-a621-7eaebc8f9269.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=Z2TAGYwPE%252F72Dn3Wr6fjz3yiRDY%253D&Expires=1607568363)
 
 ```
+
+
 //引入插件
 import Map from '@/js_sdk/fx-openMap/openMap.js'
               //既有起点也有终点
@@ -145,28 +148,28 @@ import Map from '@/js_sdk/fx-openMap/openMap.js'
 
 ```
 //引入插件
-import Amap from '../../js_sdk/Lyn4ever-gaodeRoutePlanning/lyn4ever-gaode.js';
+import Amap from '../../js_sdk/Lyn4ever-gaodeRoutePlanning/lyn4ever-gaode.js';  
 
 //搜索路线
-			getLine(item) {
-				let vm = this
-				let latitude = JSON.stringify(vm.latitude).slice(0, 9),
-					longitude = JSON.stringify(vm.longitude).slice(0, 10);
-				let startPoi = longitude + ',' + latitude;
-				let wayPoi = "";
-				let endPoi = item.longitude + ',' + item.latitude;
-				vm.polyline = []
-				if (window === undefined) {
-					Amap.line(startPoi, endPoi, wayPoi, function(res) {
-						vm.polyline.push(res)
-					});
-					Amap.markers(startPoi, endPoi, wayPoi, function(res) {
-						vm.markers = res
-					});
-				} else {
-					window.open('https://map.baidu.com/')
-				}
-			},
+getLine(item) {
+let vm = this
+let latitude = JSON.stringify(vm.latitude).slice(0, 9),
+	longitude = JSON.stringify(vm.longitude).slice(0, 10);
+let startPoi = longitude + ',' + latitude;
+let wayPoi = "";
+let endPoi = item.longitude + ',' + item.latitude;
+vm.polyline = []
+if (window === undefined) {
+	Amap.line(startPoi, endPoi, wayPoi, function(res) {
+		vm.polyline.push(res)
+	});
+	Amap.markers(startPoi, endPoi, wayPoi, function(res) {
+		vm.markers = res
+	});
+} else {
+	window.open('https://map.baidu.com/')
+}
+},
 ```
 
 #### 阶段总结
