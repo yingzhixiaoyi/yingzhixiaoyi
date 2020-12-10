@@ -12,7 +12,7 @@ export default [
                     slogan: 'The way up is not crowded, and most chose ease.',
                     name: 'yingzhixiaoyi′blog',
                     domain: 'http://yingzhixiaoyi.gitee.io/',
-                    notice: '点滴积累，未来可期',
+                    notice: '积累点滴，未来可期',
                     desc: '一个It技术的探索者'
                 }
             }
