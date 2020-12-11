@@ -23,7 +23,7 @@ let arr = files.keys().map((item, index) => {
       content: '',
       id: item.replace('./', '').replace('.md', '') || '',
       isHot: true,
-      isTop: true,
+      isTop: index?false:true,
       pubTime: new Date().getTime(),
       summary: `${item.replace('./', '').replace('.md', '') || ''} 部分总结`,
       title: item.replace('./', '').replace('.md', '') || '',

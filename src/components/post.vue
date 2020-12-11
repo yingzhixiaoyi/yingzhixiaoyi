@@ -17,8 +17,8 @@
             <p class="summary">{{post.summary}}</p>
             <footer class="entry-footer">
                 <div class="post-more">
-                    <router-link :to="{path:'/contents',query:{id:post.id}}"><i class="iconfont iconfish-li"
-                                                                                style="font-size: 25px;"></i>
+                    <router-link :to="{path:'/contents',query:{id:post.id}}">
+                        <i class="iconfont iconfish-li" style="font-size: 25px;"></i>
                     </router-link>
                 </div>
                 <div class="info-meta">
