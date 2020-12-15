@@ -1,11 +1,11 @@
 <template>
     <div class="mavonEditor">
-        <ul class="list">
-            <h2>文章列表：</h2>
-            <li v-for="item in $store.state.contents">
-                <a @click="getList(item)">{{item}}</a>
-            </li>
-        </ul>
+        <!--        <ul class="list">-->
+        <!--            <h2>文章列表：</h2>-->
+        <!--            <li v-for="item in $store.state.contents">-->
+        <!--                <a @click="getList(item)">{{item}}</a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
         <mavon-editor :toolbars="markdownOption" style="box-shadow: none" v-model="handbook"/>
     </div>
 </template>
@@ -24,6 +24,11 @@
     methods: {
       async getList(id) {
         const data = await import(`../components/article/${id}.md`)
+        console.log(
+          '~~~~~~~~~~~~~~~~~~~~~~~~~~~',
+          data.default
+          , '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+        )
         this.handbook = data.default
       }
     },
@@ -58,11 +63,19 @@
     
     .mavonEditor {
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
     }
-    
+    /deep/ .v-note-wrapper .v-note-panel .v-note-edit.divarea-wrapper{
+        flex: 0;
+        -webkit-flex:0;
+    }
+    /*/deep/ .v-note-wrapper .v-note-panel .v-note-show{*/
+    /*    flex: 1;*/
+    /*}*/
     /deep/ .v-note-edit.divarea-wrapper {
         visibility: hidden;
+        flex: 0;
+        -webkit-flex:0;
     }
     
     /deep/ .v-note-op {
@@ -77,9 +90,4 @@
         z-index: 0;
         text-align: left;
     }
-    
-    /deep/ .v-note-show {
-        margin-left: -20%;
-    }
-
 </style>

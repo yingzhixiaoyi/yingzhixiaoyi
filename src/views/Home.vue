@@ -83,9 +83,9 @@
       }
     },
     watch: {
-      '$route.params'(e, v) {
+      '$route.params'(e) {
         if (e.words) {
-          this.fetchList()
+          this.fetchList({'title':e.words})
         }
       }
     },
@@ -97,8 +97,8 @@
           console.log(err)
         })
       },
-      fetchList() {
-        fetchList().then(res => {
+      fetchList(e) {
+        fetchList(e||{}).then(res => {
           this.postList = res.data.items || [];
           this.currPage = res.data.page;
           this.hasNextPage = res.data.hasNextPage

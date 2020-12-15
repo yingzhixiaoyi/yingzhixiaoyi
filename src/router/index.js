@@ -43,7 +43,7 @@ const routes = [
     // },
     {
         path: '/contents',
-        name: 'contents',
+        name: '文章',
         component: () => import('../components/contents.vue'),
         meta: {title: 'contents'}
     }

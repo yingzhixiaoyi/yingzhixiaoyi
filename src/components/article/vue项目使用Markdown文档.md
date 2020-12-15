@@ -1,7 +1,7 @@
 ## vue项目使用Markdown文档
 
 #### 1、使用插件[mavonEditor][https://www.npmjs.com/package/mavon-editor]
-![1607487449591](https://imgkr2.cn-bj.ufileos.com/a3980e01-dba5-413e-a88d-54eaada3561d.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=NJU5K6PKmceesJj4yOwnrmLchBs%253D&Expires=1607574453)
+![1607487449591](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/blogImage/1607487449591.png)
 
 #### 2、main.js操作
 

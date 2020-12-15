@@ -109,7 +109,7 @@ methods: {
 
 ## 唤醒第三方地图 
 
-![1607480370610](https://imgkr2.cn-bj.ufileos.com/ef3dbbd2-8aa1-495d-a621-7eaebc8f9269.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=Z2TAGYwPE%252F72Dn3Wr6fjz3yiRDY%253D&Expires=1607568363)
+![](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/blogImage/1607480370610.png)
 
 ```
 
@@ -144,7 +144,7 @@ import Map from '@/js_sdk/fx-openMap/openMap.js'
 
 ## app 端生成导航线路
 
-![1607481679376](https://imgkr2.cn-bj.ufileos.com/82259ecc-4a83-4df6-8058-1cbf59e1ce08.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=pi0t0gN2KxAGgfqPxy4OlHHChL8%253D&Expires=1607568425)
+![](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/blogImage/1607481679376.png)
 
 ```
 //引入插件
