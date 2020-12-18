@@ -117,7 +117,7 @@ methods: {
 //引入插件
 import Map from '@/js_sdk/fx-openMap/openMap.js'
               //既有起点也有终点
-             var options = {
+             let options = {
               	origin: { //导航起点坐标和名称,如果不传则起点为当前位置
               		latitude: vm.latitude,
               		longitude: vm.longitude,
@@ -131,7 +131,7 @@ import Map from '@/js_sdk/fx-openMap/openMap.js'
               	mode: "drive" //导航方式 公交：bus驾车：drive（默认）,步行：walk,骑行：bike
               }
               //只有有终点(起点默认为当前位置)
-              var options = {
+              let options = {
               	destination: { //导航终点点坐标和名称
               		latitude: item.latitude,
               		longitude: item.longitude,

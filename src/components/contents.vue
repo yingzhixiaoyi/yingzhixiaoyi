@@ -6,7 +6,7 @@
         <!--                <a @click="getList(item)">{{item}}</a>-->
         <!--            </li>-->
         <!--        </ul>-->
-        <mavon-editor :toolbars="markdownOption" style="box-shadow: none" v-model="handbook"/>
+        <mavon-editor :toolbars="markdownOption" style="box-shadow: none;width: 60vw;margin: 0 auto" v-model="handbook"/>
     </div>
 </template>
 
@@ -21,14 +21,16 @@
         handbook: ''
       };
     },
+    watch:{
+      '$route.query'(e){
+        if(e.id){
+          this.getList(e.id)
+        }
+      }
+    },
     methods: {
       async getList(id) {
         const data = await import(`../components/article/${id}.md`)
-        console.log(
-          '~~~~~~~~~~~~~~~~~~~~~~~~~~~',
-          data.default
-          , '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-        )
         this.handbook = data.default
       }
     },
@@ -63,19 +65,25 @@
     
     .mavonEditor {
         width: 100%;
-        /*height: 100%;*/
     }
-    /deep/ .v-note-wrapper .v-note-panel .v-note-edit.divarea-wrapper{
+    
+    /deep/ .v-note-wrapper .v-note-panel .v-note-edit.divarea-wrapper {
         flex: 0;
-        -webkit-flex:0;
+        -webkit-flex: 0;
     }
-    /*/deep/ .v-note-wrapper .v-note-panel .v-note-show{*/
-    /*    flex: 1;*/
-    /*}*/
+    
     /deep/ .v-note-edit.divarea-wrapper {
         visibility: hidden;
         flex: 0;
-        -webkit-flex:0;
+        height: 0;
+        -webkit-flex: 0;
+    }
+    
+    /deep/ .v-note-wrapper .v-note-panel .v-note-show {
+        flex: 1;
+    }
+    /deep/.v-note-wrapper .v-note-panel .v-note-show .v-show-content, .v-note-wrapper .v-note-panel .v-note-show .v-show-content-html{
+        padding: 20px 0;
     }
     
     /deep/ .v-note-op {
