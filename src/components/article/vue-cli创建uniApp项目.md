@@ -20,18 +20,18 @@ vue create -p dcloudio/uni-preset-vue 你的项目名
 
 
 ##### 选择模板
-![1607679368973](vue-cli创建uniApp项目.assets/1607679368973.png)
+![1607679368973](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/1607679368973.png)
 
 
 ##### cd到目录，yarn serve || npm run serve 启动项目
-![](vue-cli创建uniApp项目.assets/1607679487125.png)
+![](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/1607679487125.png)
 
 
 ##### 点击链接，查看页面
-![](vue-cli创建uniApp项目.assets/1607679586221.png)
+![](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/1607679586221.png)
 ##### 项目生成文件
 
-![](vue-cli创建uniApp项目.assets/1607680534685.png)
+![](https://gitee.com/yingzhixiaoyi/mdnice/raw/master/1607680534685.png)
 
 
 #### 阶段总结：
