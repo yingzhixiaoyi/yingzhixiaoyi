@@ -42,3 +42,13 @@ yarn-淘宝源
 yarn config set registry https://registry.npm.taobao.org
 ```
 
+
+
+### cnpm
+
+```
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+//输入命令,查看是否安装成功
+cnpm 
+```
+

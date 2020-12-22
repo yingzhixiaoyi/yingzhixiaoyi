@@ -83,12 +83,12 @@ export default [
       let {page = 1, size = 10, title = ''} = config.query;
       page = page instanceof Number ? page : parseInt(page);
       size = size instanceof Number ? size : parseInt(size);
-      const pageList = List.filter((item, index) => index < size * page && index >= size * (page - 1));
+      const pageList = arr.filter((item, index) => index < size * page && index >= size * (page - 1));
       return {
         code: 20000,
         data: {
           total: arr.length,
-          items: title ? getItem(title) : arr,// pageList.sort((a, b) => a.isTop === b.isTop ? 0 : a.isTop ? -1 : 1),
+          items: title ? getItem(title) : pageList,// pageList.sort((a, b) => a.isTop === b.isTop ? 0 : a.isTop ? -1 : 1),
           hasNextPage: page * size < arr.length,
           page: page,
           size: size
