@@ -1,11 +1,5 @@
 <template>
     <div class="mavonEditor">
-        <!--        <ul class="list">-->
-        <!--            <h2>文章列表：</h2>-->
-        <!--            <li v-for="item in $store.state.contents">-->
-        <!--                <a @click="getList(item)">{{item}}</a>-->
-        <!--            </li>-->
-        <!--        </ul>-->
         <mavon-editor :toolbars="markdownOption" style="box-shadow: none;width: 60vw;margin: 0 auto" v-model="handbook"/>
     </div>
 </template>
@@ -41,28 +35,6 @@
 </script>
 
 <style lang="less" scoped>
-    .list {
-        position: fixed;
-        top: 20%;
-        left: 8%;
-        z-index: 2;
-        border: 1px solid #FBFBFB;
-        background-color: #F6F8FA;
-        border-radius: 5px;
-        padding: 20px 30px;
-        
-        h2 {
-            font-weight: 600;
-            font-size: 24px;
-        }
-        
-        li {
-            margin-top: 20px;
-            color: #428bca;
-            cursor: pointer
-        }
-    }
-    
     .mavonEditor {
         width: 100%;
     }
