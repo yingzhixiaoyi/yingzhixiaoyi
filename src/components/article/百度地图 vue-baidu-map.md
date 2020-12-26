@@ -9,6 +9,7 @@
 //main.js
 
 import BaiduMap from 'common/components/vue-baidu-map'
+import styleJson from 'common/mapStyle/custom_map_config4-2.json'//自定义地图样式
 
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
@@ -33,6 +34,31 @@ Vue.use(BaiduMap, {
         let vm = this;
         vm.BMap = BMap;
         vm.map = map;
+		//添加导航功能，作用1：将途经点画线至道路中，作用2：导航出线路
+ 		vm.DrivingRoute = new BMap.DrivingRoute(map, {
+                    onSearchComplete: vm.onSearchComplete//导航回调，可得到线路数据数组
+                })
+                vm.map.setMapStyleV2({styleJson: styleJson});//添加地图自定义样式
+
+ 		// 判断是否已经定位过了
+                if (localStorage.getItem('localPos') == null) {
+                    // 浏览器定位
+                    let geolocation = new BMap.Geolocation();
+                    geolocation.getCurrentPosition(function (r) {
+                        console.log('r--------------------------------------', r)
+                        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                            localStorage.setItem('localPos', JSON.stringify(r))
+                            vm.getPositionCallBack(r)//未定位，获取定位后回调
+                        } else {
+                            vm.$Message.warning('定位失败，请刷新重试！')
+                        }
+                    }, {enableHighAccuracy: true})
+
+                } else {
+					//已定位，获取定位后回调
+                    this.getPositionCallBack(JSON.parse(localStorage.getItem('localPos')))
+                }
+                vm.interval1 = setInterval(vm.getVehicleStat(), 3 * 60 * 1000)
 		......
         // 添加鼠标滚动缩放
         map.enableScrollWheelZoom();
@@ -44,8 +70,48 @@ Vue.use(BaiduMap, {
         map.setMapStyleV2({styleJson: styleJson});
 }
 
+ //获取导航路线
+            Driving(start, end, passingList) {
+                let vm = this
+                if (!vm.flagNumber) {//设置某情况下，清除之前的导航结果
+                    vm.DrivingRoute.clearResults()
+                }
+                vm.DrivingRoute.search(start, end, passingList)
+            },
+
+//获取导航结果
+            onSearchComplete(e) {
+                let vm = this
+                vm.flagNumber++
+                let list = e['Xq'] ? e['Xq'][0]['bk'][0]['Zq'] : e['Ol'] ? e['Ol'][0]['Wh'][0]['yr'] : []
+                if (list.length && vm.flagNumber < 3) {//获取到结果后，且满足相应条件
+                    if (vm.flagNumber == 1) {//将获取到的数据存到线路集合中
+                        vm.polyLines[0] = list
+                        vm.Driving(vm.againStart, vm.end)//获取上条集合之后，再进行下一段线路的搜索，否则后面的数据到颠倒
+                    }
+                    if (vm.flagNumber == 2) {
+                        vm.polyLines[1] = list
+                        vm.flagNumber = 0
+                        vm.passingList = []
+                        vm.viewShow()//条件满足后，再展示
+                    }
+                }
+            }，                                   
+                                                    
+//展示线路、站点、车辆
+            viewShow() {
+                let vm = this
+                vm.map.clearOverlays()
+                vm.markers.forEach(item => {
+                    vm.addMarker(item)
+                })
+                vm.polyLines.forEach((item, index) => {
+                    vm.addPolyline(item, index)
+                })
+            },
+
 //添加Marker
- addMarker(item, index) {
+ 	addMarker(item, index) {
         let vm = this
         let point = item.point ? new vm.BMap.Point(item.point.lng, item.point.lat) : 
 		new vm.BMap.Point(item.longitude, item.latitude);
@@ -92,28 +158,43 @@ Vue.use(BaiduMap, {
           vm.map.closeInfoWindow(infoWindow, point); //关闭信息窗口
         });
 },
+                    
+//添加线路polyline
+            addPolyline(data, index) {
+                let obj = {}, res = [];
+                data.forEach(item => {//过滤掉重复数据
+                    let i = item.lng + item.lat + ''
+                    if (obj[i] != i) {
+                        res.push(item)
+                        obj[i] = i
+                    }
+                })
+                let vm = this
+                let path = 'M0 0 L-4 2 L0 -2 L4 2 Z';
+                let sy = new vm.BMap.Symbol(path, {
+                    fillColor: "#fff",
+                    fillOpacity: 0.6,
+                    scale: 0.8,//图标缩放大小
+                    strokeColor: "#fff",//设置矢量图标的线填充颜色
+                    strokeWeight: 0,//设置线宽
+                });
+                let wid = res.length < 200 ? '40%' : '5%'//控制集合length的箭头间距
+                let icons = new vm.BMap.IconSequence(sy, '5%', wid);//
+                let polyline = new vm.BMap.Polyline(res, {
+                    icons: [icons],//添加线路箭头
+                    strokeColor: !index ? 'dimgray' : index == 1 ? 'mediumseagreen' : 'lime',
+                    enableClicking: false,//是否响应点击事件，默认为true
+                    strokeWeight: '6',//折线的宽度，以像素为单位
+                    strokeOpacity: 0.5,//折线的透明度，取值范围0 - 1
+                });
+                vm.map.addOverlay(polyline);
+                if (vm.goCenter) {
+                    vm.map.setViewport(res)//根据提供的地理区域或坐标设置地图视野，调整后的视野会保证包含提供的地理区域或坐标
+                    vm.goCenter = false
+                }
+            },
 
-   //添加线路polyline
-	addPolyline(){
-	let path = 'M0 0 L-4 2 L0 -2 L4 2 Z';
-        let sy = new vm.BMap.Symbol(path, {
-          fillColor: "#fff",
-          fillOpacity: 0.6,
-          scale: 0.8,//图标缩放大小
-          strokeColor: "#fff",//设置矢量图标的线填充颜色
-          strokeWeight: 0,//设置线宽
-        });
-        let icons = new vm.BMap.IconSequence(sy, '5%', '4%');
- 	let polyline = new vm.BMap.Polyline(res, {
-          icons: [icons],//添加线路箭头
-          strokeColor: vm.searchModel.color,
-          enableClicking: false,//是否响应点击事件，默认为true
-          strokeWeight: '6',//折线的宽度，以像素为单位
-          strokeOpacity: 0.5,//折线的透明度，取值范围0 - 1
-        });
-        vm.map.addOverlay(polyline);
-        vm.map.setViewport(res)//根据提供的地理区域或坐标设置地图视野，调整后的视野会保证包含提供的地									理区域或坐标
-},
+
 
 //添加路书LuShu
 	npm i bmaplib.lushu
