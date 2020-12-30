@@ -31,7 +31,7 @@ export default [
                         title: 'QQ',
                         icon: 'iconqq',
                         color: '#1AB6FF ',
-                        href: 'https://www.zhihu.com/people/ying-zhi-xiao-yi'
+                        href: 'https://www.zhihu.com/people/yingzhixiaoyi/posts'
                     },
                     {
                         id: 2,
@@ -52,7 +52,7 @@ export default [
                         title: 'csdn',
                         icon: 'iconcsdn',
                         color: 'red',
-                        href: 'https://www.zhihu.com/people/ying-zhi-xiao-yi'
+                        href: 'https://www.zhihu.com/people/yingzhixiaoyi/posts'
                     }
                 ]
             }
