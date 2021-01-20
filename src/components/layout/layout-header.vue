@@ -135,6 +135,8 @@
     .site-menus {
         display: flex;
         align-items: center;
+        max-height: 80vh;
+        overflow-y: auto;
         
         .menu-item {
             min-width: 60px;
