@@ -20,23 +20,22 @@ export default {
     layoutFooter,
     Loading
   },
-  beforeMount() {
-    // CreateChatBox
-      if(!window.init){
-        this.openChatCustomer()
-      }
+  mounted() {
+    if (!window.initParams) {
+      this.openNext()
+    }
   },
   methods: {
-    async openChatCustomer() {
-      if (window.init) {
+    openNext() {
+      if (window.initParams) {
         window.openCustomer()
       } else {
         setTimeout(() => {
-          this.openChatCustomer()
+          this.openNext()
         }, 2000)
-
       }
     }
+
   }
 }
 </script>

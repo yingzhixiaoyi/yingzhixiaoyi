@@ -7,7 +7,6 @@ import './assets/font/iconfont.css'
 import {parseTime} from './utils'
 import mavonEditor from 'mavon-editor'// 引入makrdown插件
 import 'mavon-editor/dist/css/index.css'
-
 require('./Mock');
 Vue.use(mavonEditor);
 Vue.config.productionTip = false;
