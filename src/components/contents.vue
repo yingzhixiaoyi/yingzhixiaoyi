@@ -38,30 +38,30 @@
     .mavonEditor {
         width: 100%;
     }
-    
+
     /deep/ .v-note-wrapper .v-note-panel .v-note-edit.divarea-wrapper {
         flex: 0;
         -webkit-flex: 0;
     }
-    
+
     /deep/ .v-note-edit.divarea-wrapper {
         visibility: hidden;
         flex: 0;
         height: 0;
         -webkit-flex: 0;
     }
-    
+
     /deep/ .v-note-wrapper .v-note-panel .v-note-show {
         flex: 1;
     }
     /deep/.v-note-wrapper .v-note-panel .v-note-show .v-show-content, .v-note-wrapper .v-note-panel .v-note-show .v-show-content-html{
         padding: 20px 0;
     }
-    
+
     /deep/ .v-note-op {
         visibility: hidden;
     }
-    
+
     /deep/ .v-note-wrapper {
         box-shadow: none;
         margin-top: 80px;
